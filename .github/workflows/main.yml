@@ -37,8 +37,8 @@ jobs:
           file: Dockerfile
           load: true
           tags: ci-test:latest
-          cache-from: type=registry,ref=ghcr.io/${{github.owner}}/docker-node-app:buildcache
-          cache-to: type=registry,ref=ghcr.io/${{github.owner}}/docker-node-app:buildcache,mode=max
+          cache-from: type=registry,ref=ghcr.io/antoine/docker-node-app:buildcache
+          cache-to: type=registry,ref=ghcr.io/antoine/docker-node-app:buildcache,mode=max
 
       - name: Run container
         run: |
