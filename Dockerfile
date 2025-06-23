@@ -16,7 +16,7 @@ COPY . .
 FROM gcr.io/distroless/nodejs22-debian12 AS prod
 WORKDIR /app
 # Only copy the necessary files from the build stage
-COPY --from=build /app/src/index.js ./index.js
+COPY --from=build /app/index.js ./index.js
 COPY --from=build /app/package.json ./package.json
 COPY --from=build /app/node_modules node_modules
 # Startup command
