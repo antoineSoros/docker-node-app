@@ -8,10 +8,6 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@emotion/cache": "^11.14.0",
-    "@emotion/css": "^11.13.5",
-    "@emotion/react": "^11.14.0",
-    "@emotion/server": "^11.11.0",
     "cookies-next": "5.1.0",
     "core-js": "3.37.0",
     "date-fns": "2.30.0",
