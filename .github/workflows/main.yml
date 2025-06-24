@@ -76,9 +76,24 @@ jobs:
       steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
       - name: Analyze Workflow Performance
         uses: somaz94/github-action-analyzer@v1
+        id: analyzer
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             workflow_file: ci.yml
             repository: ${{ github.repository }}
+      
+      - name: Create Performance Report
+        run: |
+          echo "# Workflow Performance Analysis" > performance-report.md
+          echo "## Analysis Date: $(date)" >> performance-report.md
+          echo "\n### Results" >> performance-report.md
+          echo "${{ steps.analyzer.outputs.analysis }}" >> performance-report.md
+      
+      - name: Upload Performance Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-report
+          path: performance-report.md
