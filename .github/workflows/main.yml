@@ -71,10 +71,14 @@ jobs:
         run: |
           docker run --rm ci-test:latest
 
-  # analyze:
-  #   name: Analyze Workflow Performance
-  #   runs-on: ubuntu-latest
-  #   needs: build-and-run
-  #   steps:
-  #     - name: Analyze workflow performance
-  #       uses: actions-ecosystem/action-analyzer @v1
+  analyze:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Analyze Workflow Performance
+        uses: somaz94/github-action-analyzer@v1
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            workflow_file: ci.yml
+            repository: ${{ github.repository }}
